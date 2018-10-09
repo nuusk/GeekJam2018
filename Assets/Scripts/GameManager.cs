@@ -8,12 +8,16 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public GameObject TimeManager;
+    public GameObject TimeManagerObject;
+    public GameObject StageManagerObject;
 
     public bool GameEnded { get { return _gameEnded; } }
+    public TimeManager TimeManager { get { return _timeManager; } }
+    public StageManager StageManager { get { return _stageManager; } }
 
     private bool _gameEnded;
     private TimeManager _timeManager;
+    private StageManager _stageManager;
 
     #region Setup
 
@@ -41,14 +45,6 @@ public class GameManager : MonoBehaviour
         _gameEnded = true;
     }
 
-    public void ChangeStage(StageType stageType)
-    {
-        if (stageType == StageType.Game)
-            ChangeStateToForge();
-        else if (stageType == StageType.Forge)
-            ChangeStateToForge();
-    } 
-
     #endregion
 
     #region Helpers
@@ -68,18 +64,8 @@ public class GameManager : MonoBehaviour
     {
         _gameEnded = false;
 
-        _timeManager = TimeManager.GetComponent<TimeManager>();        
-    }
-   
-
-    private void ChangeStateToGame()
-    {
-        _timeManager.TimeStart();
-    }
-
-    private void ChangeStateToForge()
-    {
-        _timeManager.TimeStop();
+        _timeManager = TimeManagerObject.GetComponent<TimeManager>();
+        _stageManager = StageManagerObject.GetComponent<StageManager>();
     }
 
     #endregion

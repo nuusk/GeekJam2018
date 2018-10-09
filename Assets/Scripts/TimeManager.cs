@@ -52,7 +52,7 @@ public class TimeManager : MonoBehaviour
             GameManager.instance.GameEnd();
         }
 
-        Timer.text = _timeLeft.ToString();
+        Timer.text = TimeLeft.ToString();
     }
 
     private bool CanUpdateTime()
