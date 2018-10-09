@@ -4,6 +4,6 @@ using UnityEngine;
 
 public enum StageType
 {
-    Forge = 0,
-    Game = 1
+    Game = 0,
+    Forge = 1
 }
