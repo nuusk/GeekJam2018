@@ -4,24 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour {
-
+public class GameManager : MonoBehaviour
+{
     public static GameManager instance;
 
-    public GameObject TextManager;
-    
-    [Space]
-    public int TotalTime = 100;
+    public GameObject TimeManager;
 
-    public int TimeLeft { get { return (int)Math.Truncate(_timeLeft); } }
-    public bool TimeStopped { get { return _timeStopped; } }
     public bool GameEnded { get { return _gameEnded; } }
-    public float TimeFactor { get { return _timeFactor; } }
 
-    private float _timeLeft;
-    private bool _timeStopped;
     private bool _gameEnded;
-    private float _timeFactor;
+    private TimeManager _timeManager;
+
+    #region Setup
 
     void Awake()
     {
@@ -35,8 +29,29 @@ public class GameManager : MonoBehaviour {
 	
 	void Update()
     {
-        UpdateTime();
+
 	}
+
+    #endregion
+
+    #region Methods
+
+    public void GameEnd()
+    {
+        _gameEnded = true;
+    }
+
+    public void ChangeStage(StageType stageType)
+    {
+        if (stageType == StageType.Game)
+            ChangeStateToForge();
+        else if (stageType == StageType.Forge)
+            ChangeStateToForge();
+    } 
+
+    #endregion
+
+    #region Helpers
 
     private void SetGameManager()
     {
@@ -51,33 +66,21 @@ public class GameManager : MonoBehaviour {
 
     private void Initialize()
     {
-        _timeLeft = TotalTime;
-        _timeStopped = false;
         _gameEnded = false;
-        _timeFactor = 1.0f;
-    }
 
-    private void UpdateTime()
+        _timeManager = TimeManager.GetComponent<TimeManager>();        
+    }
+   
+
+    private void ChangeStateToGame()
     {
-        if (!CanUpdateTime())
-            return;
-
-        _timeLeft -= Time.deltaTime * _timeFactor;
-
-        if (_timeLeft <= 0)
-        {
-            _timeLeft = 0;
-            GameEnd();
-        }
+        _timeManager.TimeStart();
     }
 
-    private bool CanUpdateTime()
+    private void ChangeStateToForge()
     {
-        return (!_gameEnded && !_timeStopped);
+        _timeManager.TimeStop();
     }
-    
-    private void GameEnd()
-    {
-        _gameEnded = true;
-    }
+
+    #endregion
 }
