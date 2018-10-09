@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance;
 
     public GameObject TextManager;
-
+    
     [Space]
     public int TotalTime = 100;
 
