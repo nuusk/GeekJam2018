@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
+    public GameObject TimeManagerObject;
+
     public StageType StageType { get { return _stageType; } }
 
     private StageType _stageType;
+    private TimeManager _timeManager;
 
 	void Start()
     {
@@ -25,16 +28,17 @@ public class StageManager : MonoBehaviour
 
     public void ChangeStageToGame()
     {
-        GameManager.instance.TimeManager.TimeStart();
+        _timeManager.TimeStart();
     }
 
     public void ChangeStageToForge()
     {
-        GameManager.instance.TimeManager.TimeStop();
+        _timeManager.TimeStop();
     }
 
     private void Initialize()
     {
         _stageType = StageType.Game;
+        _timeManager = TimeManagerObject.GetComponent<TimeManager>();
     }
 }
