@@ -44,7 +44,7 @@ public class NoseMiniGame : MonoBehaviour, IMiniGame
         _completed = true;
 
         ShowImage(_imageManager.GetWinSprite());
-        Destroy(gameObject, 1.5f);
+        Invoke("BackToGame", 1.5f);
     }
 
     public void Lose()
@@ -53,7 +53,7 @@ public class NoseMiniGame : MonoBehaviour, IMiniGame
             return;
 
         ShowImage(_imageManager.GetLoseSprite());
-        Destroy(gameObject, 1.5f);
+        Invoke("BackToGame", 1.5f);
     }
 
     private void ShowImage(Sprite sprite)
@@ -66,5 +66,11 @@ public class NoseMiniGame : MonoBehaviour, IMiniGame
     private void UpdateTime()
     {
         TimeLeft -= Time.deltaTime;
+    }
+
+    private void BackToGame()
+    {
+        GameManager.instance.ChangeStageToGame();
+        Destroy(gameObject);
     }
 }
