@@ -26,7 +26,7 @@ public class GhastGenerator : MonoBehaviour {
             {
                 if (UnityEngine.Random.Range(0f, 1f) < probability)
                 {
-                    ghastPrefab = Instantiate(
+                    Instantiate(
                         ghastPrefab,
                         new Vector3(spawners[i].transform.position.x, spawners[i].transform.position.y, spawners[i].transform.position.z),
                         Quaternion.identity

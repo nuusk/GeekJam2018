@@ -16,7 +16,7 @@ public class SoupGenerator : MonoBehaviour {
         {
             if (i % soupFrequency == 0)
             {
-                soupPrefab = Instantiate(
+                Instantiate(
                     soupPrefab, 
                     new Vector3(tilesets[i].transform.position.x, tilesets[i].transform.position.y, tilesets[i].transform.position.z), 
                     Quaternion.identity
