@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BonusDestroyer : MonoBehaviour
 {
+    public bool LoseOnCollision = false;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "minigame-bonus")
@@ -12,7 +14,9 @@ public class BonusDestroyer : MonoBehaviour
             IMiniGame miniGame = collision.gameObject.GetComponentInParent<IMiniGame>();
 
             miniGameBonus.Destroy();
-            miniGame.Lose();
+            
+            if (LoseOnCollision)
+                miniGame.Lose();
         }
     }
 }
