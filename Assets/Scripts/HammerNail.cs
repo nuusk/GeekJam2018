@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spike : MonoBehaviour, IMiniGameBonus
+public class HammerNail : MonoBehaviour, IMiniGameBonus
 {
     public float BonusValue { get { return Bonus; } }
 
@@ -14,6 +14,12 @@ public class Spike : MonoBehaviour, IMiniGameBonus
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+            HitSpike();
     }
 
     public void Destroy()
