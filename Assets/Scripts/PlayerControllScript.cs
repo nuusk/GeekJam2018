@@ -35,7 +35,9 @@ public class PlayerControllScript : MonoBehaviour
 
         moveInput = Input.GetAxis("Horizontal");
 
-        animator.SetFloat("Speed", Mathf.Abs(moveInput));
+        animator.SetBool("isGrounded", isGrounded);
+        animator.SetFloat("SpeedX", Mathf.Abs(moveInput));
+        animator.SetFloat("SpeedY", rb.velocity.y);
 
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 
