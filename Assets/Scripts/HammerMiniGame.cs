@@ -47,7 +47,7 @@ public class HammerMiniGame : MonoBehaviour, IMiniGame
             return;
 
         ShowImage(_imageManager.GetLoseSprite());
-        Destroy(gameObject, 1.5f);
+        Invoke("BackToGame", 1.5f);
     }
 
     public void Win()
@@ -55,7 +55,7 @@ public class HammerMiniGame : MonoBehaviour, IMiniGame
         Completed = true;
 
         ShowImage(_imageManager.GetWinSprite());
-        Destroy(gameObject, 1.5f);
+        Invoke("BackToGame", 1.5f);
     }
 
     private void ShowImage(Sprite sprite)
@@ -68,5 +68,11 @@ public class HammerMiniGame : MonoBehaviour, IMiniGame
     private void UpdateTime()
     {
         TimeLeft -= Time.deltaTime;
+    }
+
+    private void BackToGame()
+    {
+        GameManager.instance.ChangeStageToGame();
+        Destroy(gameObject);
     }
 }
