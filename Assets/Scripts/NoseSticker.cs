@@ -18,7 +18,6 @@ public class NoseSticker : MonoBehaviour, IMiniGameBonus
 
     private Rigidbody2D rb;
     private SpotType prevSpot;
-    private float step;
     private Vector2 targetPosition;
     private const float delta = 0.1f;
 
@@ -52,7 +51,7 @@ public class NoseSticker : MonoBehaviour, IMiniGameBonus
         if (IsOnTargetPosition())
             targetPosition = GetNewTargetPosition();
 
-        step = HorizontalSpeed * Time.deltaTime;
+        float step = HorizontalSpeed * Time.deltaTime;
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, step);
     }
 
