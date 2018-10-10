@@ -6,6 +6,8 @@ TagManager:
   tags:
   - minigame-bonus
   - minigame
+  - PickUp
+  - TilesetPrefab
   layers:
   - Default
   - TransparentFX

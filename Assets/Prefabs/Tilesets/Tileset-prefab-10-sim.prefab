@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 4184150361497058}
   m_Layer: 0
   m_Name: Tileset-prefab-10-sim
-  m_TagString: Untagged
+  m_TagString: TilesetPrefab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

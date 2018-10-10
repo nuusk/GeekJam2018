@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 4588237601900674}
   m_Layer: 0
   m_Name: Tileset-prefab-00-start
-  m_TagString: Untagged
+  m_TagString: TilesetPrefab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
