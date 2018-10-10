@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControllScript : MonoBehaviour
 {
+
+    public GameObject soupParticleConsumedPrefab;
 
     public Animator animator;
 
@@ -11,6 +14,9 @@ public class PlayerControllScript : MonoBehaviour
     public float speed;
     public float jumpForce;
     public float moveInput;
+
+    public Text countText;
+
 
     private Rigidbody2D rb;
 
@@ -24,9 +30,13 @@ public class PlayerControllScript : MonoBehaviour
     public int maxJumps;
     private int extraJumps;
 
+    private int soupCount;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        soupCount = 0;
+        SetCountText();
     }
 
     private void FixedUpdate()
@@ -70,5 +80,20 @@ public class PlayerControllScript : MonoBehaviour
         {
             extraJumps = maxJumps;
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.CompareTag("PickUp")) {
+            other.gameObject.SetActive(false);
+            soupCount += 1;
+            GameObject soupObject = Instantiate(soupParticleConsumedPrefab, other.transform.position, Quaternion.identity);
+            soupObject.GetComponent<ParticleSystem>().Play();
+            Destroy(soupObject, 1f);
+            SetCountText();
+        }    
+    }
+
+    void SetCountText() {
+        countText.text = "SOUPS: " + soupCount.ToString();
     }
 }
