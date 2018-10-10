@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class NoseMiniGame : MonoBehaviour, IMiniGame
 {
-    public bool Completed = false;
     public float RoundTime = 3f;
     public float TimeLeft;
 
