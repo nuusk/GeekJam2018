@@ -16,15 +16,13 @@ public class Parallax : MonoBehaviour {
 
 	private float lastCameraY;
 
-
-
-
 	// Use this for initialization
 	void Start () {
 		cameraTransform = Camera.main.transform;
 		lastCameraX = cameraTransform.position.x;
 		lastCameraY = cameraTransform.position.y;
 		layers = new Transform[transform.childCount];
+		Debug.Log(layers);
 		for (int i=0; i<transform.childCount; i++) {
 			layers[i] = transform.GetChild(i);
 		}
@@ -61,5 +59,13 @@ public class Parallax : MonoBehaviour {
 		transform.position += Vector3.up * (deltaY * parallaxSpeedY);
 		lastCameraX = cameraTransform.position.x;
 		lastCameraY = cameraTransform.position.y;
+
+		if (cameraTransform.position.x < (layers[leftIndex].transform.position.x + viewZone)) {
+			ScrollLeft();
+		}
+
+		if (cameraTransform.position.x > (layers[leftIndex].transform.position.x - viewZone)) {
+			ScrollRight();
+		}
 	}
 }
