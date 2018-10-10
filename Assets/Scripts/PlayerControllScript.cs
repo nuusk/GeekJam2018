@@ -5,15 +5,16 @@ using UnityEngine;
 public class PlayerControllScript : MonoBehaviour
 {
 
-    // Use this for initializatio
+    public Animator animator;
 
+    // Use this for initialization
     public float speed;
     public float jumpForce;
     public float moveInput;
 
     private Rigidbody2D rb;
 
-    private bool facingRigth = true;
+    private bool facingRight = true;
 
     private bool isGrounded;
     public Transform groundCheck;
@@ -33,12 +34,15 @@ public class PlayerControllScript : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 
         moveInput = Input.GetAxis("Horizontal");
+
+        animator.SetFloat("Speed", Mathf.Abs(moveInput));
+
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
 
-        if(facingRigth == false && moveInput > 0)
+        if(facingRight == false && moveInput > 0)
         {
             Flip();
-        } else if(facingRigth == true && moveInput < 0)
+        } else if(facingRight == true && moveInput < 0)
         {
             Flip();
         }
@@ -46,7 +50,7 @@ public class PlayerControllScript : MonoBehaviour
 
     void Flip()
     {
-        facingRigth = !facingRigth;
+        facingRight = !facingRight;
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
