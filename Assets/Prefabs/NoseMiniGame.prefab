@@ -416,7 +416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slider: {fileID: 114602303025694606}
-  RoundTime: 8
+  RoundTime: 5
   TimeLeft: 0
 --- !u!114 &114410712514165272
 MonoBehaviour:
@@ -583,7 +583,7 @@ MonoBehaviour:
   Bonus: 0.5
   RandomFactor: 2
   VerticalSpeed: 20
-  HorizontalSpeed: 10
+  HorizontalSpeed: 15
   Released: 0
 --- !u!114 &114991558003683744
 MonoBehaviour:
@@ -749,7 +749,7 @@ RectTransform:
   m_GameObject: {fileID: 1971760859204458}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3595313, y: 2.8125, z: 1}
+  m_LocalScale: {x: 2.4133039, y: 8.015906, z: 1}
   m_Children:
   - {fileID: 224215994536176874}
   - {fileID: 224935280897090580}
@@ -758,7 +758,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -393.3, y: -336}
+  m_AnchoredPosition: {x: -319, y: 299}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224607615165527922

@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NoseOnCollision : MonoBehaviour
+public class DeskOnCollision : MonoBehaviour
 {
-    public Sprite Sprite;
+    public Sprite SpriteTop;
+    public Sprite SpriteBottom;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "minigame-bonus")
         {
-            transform.parent.GetComponent<SpriteRenderer>().sprite = Sprite;
+
+            GetComponent<SpriteRenderer>().sprite = SpriteTop;
+            GameObject.Find("DeskBottom").GetComponent<SpriteRenderer>().sprite = SpriteBottom;
 
             GameObject miniGameBonusObject = collision.gameObject;
 

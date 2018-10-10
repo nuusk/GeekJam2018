@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HammerMiniGame : MonoBehaviour
+public class HammerMiniGame : MonoBehaviour, IMiniGame
 {
     public Slider Slider;
     public float RoundTime = 10f;
@@ -36,12 +36,12 @@ public class HammerMiniGame : MonoBehaviour
 
     public void Lose()
     {
-        Debug.Log("Przegrałeś");
+        Destroy(gameObject, 1.5f);
     }
 
     public void Win()
     {
-        Debug.Log("Wygrałeś");
+        Destroy(gameObject, 1.5f);
     }
 
     private void UpdateTime()
