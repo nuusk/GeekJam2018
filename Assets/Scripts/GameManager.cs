@@ -4,24 +4,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour {
-
+public class GameManager : MonoBehaviour
+{
     public static GameManager instance;
 
-    public GameObject TextManager;
+    public GameObject TimeManagerObject;
+    public GameObject StageManagerObject;
 
-    [Space]
-    public int TotalTime = 100;
-
-    public int TimeLeft { get { return (int)Math.Truncate(_timeLeft); } }
-    public bool TimeStopped { get { return _timeStopped; } }
     public bool GameEnded { get { return _gameEnded; } }
-    public float TimeFactor { get { return _timeFactor; } }
+    public TimeManager TimeManager { get { return _timeManager; } }
+    public StageManager StageManager { get { return _stageManager; } }
 
-    private float _timeLeft;
-    private bool _timeStopped;
     private bool _gameEnded;
-    private float _timeFactor;
+    private TimeManager _timeManager;
+    private StageManager _stageManager;
+
+    #region Setup
 
     void Awake()
     {
@@ -35,8 +33,21 @@ public class GameManager : MonoBehaviour {
 	
 	void Update()
     {
-        UpdateTime();
+
 	}
+
+    #endregion
+
+    #region Methods
+
+    public void GameEnd()
+    {
+        _gameEnded = true;
+    }
+
+    #endregion
+
+    #region Helpers
 
     private void SetGameManager()
     {
@@ -51,33 +62,11 @@ public class GameManager : MonoBehaviour {
 
     private void Initialize()
     {
-        _timeLeft = TotalTime;
-        _timeStopped = false;
         _gameEnded = false;
-        _timeFactor = 1.0f;
+
+        _timeManager = TimeManagerObject.GetComponent<TimeManager>();
+        _stageManager = StageManagerObject.GetComponent<StageManager>();
     }
 
-    private void UpdateTime()
-    {
-        if (!CanUpdateTime())
-            return;
-
-        _timeLeft -= Time.deltaTime * _timeFactor;
-
-        if (_timeLeft <= 0)
-        {
-            _timeLeft = 0;
-            GameEnd();
-        }
-    }
-
-    private bool CanUpdateTime()
-    {
-        return (!_gameEnded && !_timeStopped);
-    }
-    
-    private void GameEnd()
-    {
-        _gameEnded = true;
-    }
+    #endregion
 }
