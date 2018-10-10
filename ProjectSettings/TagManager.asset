@@ -9,6 +9,7 @@ TagManager:
   - PickUp
   - TilesetPrefab
   - GhastSpawner
+  - Enemy
   layers:
   - Default
   - TransparentFX
