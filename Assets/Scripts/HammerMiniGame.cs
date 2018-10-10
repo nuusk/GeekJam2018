@@ -6,13 +6,20 @@ using UnityEngine.UI;
 
 public class HammerMiniGame : MonoBehaviour, IMiniGame
 {
+    public Image ResultImage;
     public Slider Slider;
     public float RoundTime = 10f;
     public float TimeLeft;
+    public bool Completed = false;
+
+    private AudioSource _audioSource;
+    private ImageManager _imageManager;
 
     void Start()
     {
         TimeLeft = RoundTime;
+        _audioSource = GetComponent<AudioSource>();
+        _imageManager = GameObject.Find("ImageManager").GetComponent<ImageManager>();
     }
 
     void Update()
@@ -36,12 +43,26 @@ public class HammerMiniGame : MonoBehaviour, IMiniGame
 
     public void Lose()
     {
+        if (Completed)
+            return;
+
+        ShowImage(_imageManager.GetLoseSprite());
         Destroy(gameObject, 1.5f);
     }
 
     public void Win()
     {
+        Completed = true;
+
+        ShowImage(_imageManager.GetWinSprite());
         Destroy(gameObject, 1.5f);
+    }
+
+    private void ShowImage(Sprite sprite)
+    {
+        ResultImage.sprite = sprite;
+        ResultImage.transform.localScale = Vector3.zero;
+        ResultImage.enabled = true;
     }
 
     private void UpdateTime()
