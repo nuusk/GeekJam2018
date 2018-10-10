@@ -162,7 +162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1995428245947326
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +171,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4587756188186870}
-  - component: {fileID: 114850841585035268}
   - component: {fileID: 212840462545118206}
   - component: {fileID: 61292248008861032}
   - component: {fileID: 50711504910869498}
@@ -239,7 +238,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: -0.2
+  m_GravityScale: -0.1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -307,7 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bonus: 1
-  HitForce: 0.05
+  HitForce: 20
 --- !u!114 &114195838369240188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -495,7 +494,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114850841585035268}
+      - m_Target: {fileID: 114194692351832936}
         m_MethodName: HitSpike
         m_Mode: 1
         m_Arguments:
@@ -584,19 +583,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Button
---- !u!114 &114850841585035268
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1995428245947326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d54972dcb23761f429f22725957aace5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Bonus: 1
-  HitForce: 10
 --- !u!212 &212622239953949870
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -789,7 +775,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

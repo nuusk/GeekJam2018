@@ -12,10 +12,10 @@ public class NoseSticker : MonoBehaviour, IMiniGameBonus
     public float VerticalSpeed = 50f;
     public float HorizontalSpeed = 30f;
     public bool Released = false;
-    public readonly Vector2 LeftSpot = new Vector2(-3.5f, 0f);
-    public readonly Vector2 RigthSpot = new Vector2(3.5f, 0f);
-    public readonly Vector2 CenterSpot = new Vector2(0f, 0f);
 
+    private Vector2 leftSpot; 
+    private Vector2 rightSpot;
+    private Vector2 centerSpot;
     private Rigidbody2D rb;
     private SpotType prevSpot;
     private Vector2 targetPosition;
@@ -25,6 +25,9 @@ public class NoseSticker : MonoBehaviour, IMiniGameBonus
     {
         rb = GetComponent<Rigidbody2D>();
         prevSpot = SpotType.Center;
+        leftSpot = new Vector2(-3.5f, transform.position.y);
+        rightSpot = new Vector2(3.5f, transform.position.y);
+        centerSpot = new Vector2(0, transform.position.y);
         targetPosition = GetNewTargetPosition();
     }
 
@@ -73,11 +76,11 @@ public class NoseSticker : MonoBehaviour, IMiniGameBonus
         prevSpot = spot;
 
         if (spot == SpotType.Left)
-            return LeftSpot;
+            return leftSpot;
         else if (spot == SpotType.Center)
-            return CenterSpot;
+            return centerSpot;
         else
-            return RigthSpot;
+            return rightSpot;
     }
 
     private Vector2 GetRandomizedPosition(Vector2 vector)

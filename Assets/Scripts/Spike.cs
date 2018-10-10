@@ -23,6 +23,6 @@ public class Spike : MonoBehaviour, IMiniGameBonus
 
     public void HitSpike()
     {
-        rb.AddForce(new Vector2(0, -HitForce));
+        rb.AddForce(new Vector2(0, -20));
     }
 }
