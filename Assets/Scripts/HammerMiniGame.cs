@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NoseMiniGame : MonoBehaviour, IMiniGame
+public class HammerMiniGame : MonoBehaviour
 {
-    public float RoundTime = 3f;
+    public float RoundTime = 10f;
     public float TimeLeft;
 
     void Start()
@@ -23,16 +23,14 @@ public class NoseMiniGame : MonoBehaviour, IMiniGame
         }
     }
 
-    public void Win()
-    {
-        Debug.Log("Wygrana");
-        Destroy(gameObject);
-    }
-
     public void Lose()
     {
-        Debug.Log("Przegrana");
-        Destroy(gameObject);
+        Debug.Log("Przegrałeś");
+    }
+
+    public void Win()
+    {
+        Debug.Log("Wygrałeś");
     }
 
     private void UpdateTime()
