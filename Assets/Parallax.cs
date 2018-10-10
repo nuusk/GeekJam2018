@@ -5,13 +5,16 @@ using UnityEngine;
 public class Parallax : MonoBehaviour {
 
 	public float backgroundSize;
-	public float parallaxSpeed;
+	public float parallaxSpeedX;
+	public float parallaxSpeedY;
 	private Transform cameraTransform;
 	private Transform[] layers;
 	private float viewZone = 10;
 	private int leftIndex;
 	private int rightIndex;
 	private float lastCameraX;
+
+	private float lastCameraY;
 
 
 
@@ -20,6 +23,7 @@ public class Parallax : MonoBehaviour {
 	void Start () {
 		cameraTransform = Camera.main.transform;
 		lastCameraX = cameraTransform.position.x;
+		lastCameraY = cameraTransform.position.y;
 		layers = new Transform[transform.childCount];
 		for (int i=0; i<transform.childCount; i++) {
 			layers[i] = transform.GetChild(i);
@@ -52,7 +56,10 @@ public class Parallax : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		float deltaX = cameraTransform.position.x - lastCameraX;
-		transform.position += Vector3.right * (deltaX * parallaxSpeed);
+		float deltaY = cameraTransform.position.y - lastCameraY;
+		transform.position += Vector3.right * (deltaX * parallaxSpeedX);
+		transform.position += Vector3.up * (deltaY * parallaxSpeedY);
 		lastCameraX = cameraTransform.position.x;
+		lastCameraY = cameraTransform.position.y;
 	}
 }
