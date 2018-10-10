@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public Text TimeText;
+    public GameObject[] MiniGames;
 
     public int TotalTime = 100;
     public float TimeLeft;
@@ -17,6 +18,8 @@ public class GameManager : MonoBehaviour
     public float TimeFactor;
     public bool GameEnded;
     public StageType StageType;
+
+    private AudioSource _audioSource;
 
     #region Setup
 
@@ -28,6 +31,9 @@ public class GameManager : MonoBehaviour
 
 	void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space) && StageType == StageType.Game)
+            ChangeStageToForge();
+
         UpdateTime();
 	}
 
@@ -47,15 +53,27 @@ public class GameManager : MonoBehaviour
             TimeLeft = TotalTime;
     }
 
-    public void GameEnd()
+    public void GameOver()
     {
         GameEnded = true;
+        _audioSource.Play();
     }
 
-    public void ChangeStage()
+    public void ChangeStageToGame()
     {
-        StageType = StageType == StageType.Forge ? StageType.Forge : StageType.Game;
-        TimeStopped = !TimeStopped;
+        StageType = StageType.Game;
+        TimeStopped = false;
+        TimeText.enabled = true;
+    }
+
+    public void ChangeStageToForge()
+    {
+        StageType = StageType.Forge;
+        TimeStopped = true;
+        TimeText.enabled = false;
+
+        int idx = UnityEngine.Random.Range(0, MiniGames.Length);
+        Instantiate(MiniGames[idx], transform.parent);
     }
 
     #endregion
@@ -80,6 +98,7 @@ public class GameManager : MonoBehaviour
         TimeFactor = 1.0f;
         GameEnded = false;
         StageType = StageType.Game;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void UpdateTime()
@@ -92,7 +111,7 @@ public class GameManager : MonoBehaviour
         if (TimeLeft <= 0)
         {
             TimeLeft = 0;
-            GameEnd();
+            GameOver();
         }
 
         UpdateTimeText();
@@ -101,7 +120,7 @@ public class GameManager : MonoBehaviour
     private void UpdateTimeText()
     {
         if (TimeText != null)
-            TimeText.text = ((int)Math.Truncate(Convert.ToDouble(TimeLeft))).ToString();
+            TimeText.text = Math.Floor(TimeLeft).ToString();
     }
 
     private bool CanUpdateTime()

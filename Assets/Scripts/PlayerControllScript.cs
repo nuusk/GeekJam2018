@@ -13,6 +13,7 @@ public class PlayerControllScript : MonoBehaviour
     // Use this for initialization
     public float speed;
     public float jumpForce;
+    private float outsideEffects;
     public float moveInput;
 
     public Text countText;
@@ -32,10 +33,16 @@ public class PlayerControllScript : MonoBehaviour
 
     private int soupCount;
 
+    private float slowDownTime = 3;
+    private float remainingTime = 5;
+    private float slowDownRate = 0.5f;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         soupCount = 0;
+        outsideEffects = 1f;
+        remainingTime = 0;
         SetCountText();
     }
 
@@ -49,7 +56,7 @@ public class PlayerControllScript : MonoBehaviour
         animator.SetFloat("SpeedX", Mathf.Abs(moveInput));
         animator.SetFloat("SpeedY", rb.velocity.y);
 
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        rb.velocity = new Vector2(moveInput * speed * outsideEffects, rb.velocity.y);
 
         if(facingRight == false && moveInput > 0)
         {
@@ -76,7 +83,18 @@ public class PlayerControllScript : MonoBehaviour
             extraJumps--;
         }
 
-        if(isGrounded == true)
+        // Slowing down after enemy 
+        if (remainingTime > 0)
+        {
+            remainingTime -= Time.deltaTime;
+            outsideEffects = slowDownRate;
+        }
+        else
+        {
+            outsideEffects = 1;
+        }
+
+        if (isGrounded == true)
         {
             extraJumps = maxJumps;
         }
@@ -90,7 +108,11 @@ public class PlayerControllScript : MonoBehaviour
             soupObject.GetComponent<ParticleSystem>().Play();
             Destroy(soupObject, 1f);
             SetCountText();
-        }    
+        }
+        else if (other.gameObject.CompareTag("Enemy"))
+        {
+            remainingTime = slowDownTime;
+        }
     }
 
     void SetCountText() {
