@@ -8,6 +8,7 @@ TagManager:
   - minigame
   - PickUp
   - TilesetPrefab
+  - GhastSpawner
   layers:
   - Default
   - TransparentFX

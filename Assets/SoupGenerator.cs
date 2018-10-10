@@ -16,7 +16,6 @@ public class SoupGenerator : MonoBehaviour {
         {
             if (i % soupFrequency == 0)
             {
-                Debug.Log("Generating a soup");
                 soupPrefab = Instantiate(
                     soupPrefab, 
                     new Vector3(tilesets[i].transform.position.x, tilesets[i].transform.position.y, tilesets[i].transform.position.z), 
@@ -24,10 +23,5 @@ public class SoupGenerator : MonoBehaviour {
                 );
             }
         }
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 }
