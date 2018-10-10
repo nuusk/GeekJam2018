@@ -11,6 +11,7 @@ public class NoseOnCollision : MonoBehaviour
         if (collision.gameObject.tag == "minigame-bonus")
         {
             transform.parent.GetComponent<SpriteRenderer>().sprite = Sprite;
+            transform.parent.GetComponent<AudioSource>().Play();
 
             GameObject miniGameBonusObject = collision.gameObject;
 
