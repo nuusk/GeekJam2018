@@ -1,11 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GuitarHeroMiniGame : MonoBehaviour, IMiniGame
 {
     public Transform[] Spawners;
     public GameObject MonsterObject;
+    public Slider Slider;
 
     public float SpawnInterval = 0.5f;
     public float RoundTime = 10f;
@@ -26,6 +29,14 @@ public class GuitarHeroMiniGame : MonoBehaviour, IMiniGame
             TimeLeft = 0;
             Lose();
         }
+
+        UpdateSlider();
+    }
+
+    private void UpdateSlider()
+    {
+        float progress = Mathf.Clamp01((RoundTime - TimeLeft) / RoundTime);
+        Slider.value = progress;
     }
 
     public void Lose()
@@ -45,7 +56,7 @@ public class GuitarHeroMiniGame : MonoBehaviour, IMiniGame
 
     private void MonsterFactory()
     {
-        int idx = Random.Range(0, Spawners.Length);
+        int idx = UnityEngine.Random.Range(0, Spawners.Length);
         Transform spawnPoint = Spawners[idx].transform;
 
         GameObject monsterObject = Instantiate(MonsterObject, spawnPoint.position, Quaternion.identity, spawnPoint);

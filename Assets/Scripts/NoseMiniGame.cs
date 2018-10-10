@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NoseMiniGame : MonoBehaviour, IMiniGame
 {
+    public Slider Slider;
     public float RoundTime = 3f;
     public float TimeLeft;
 
@@ -21,6 +24,14 @@ public class NoseMiniGame : MonoBehaviour, IMiniGame
             TimeLeft = 0;
             Lose();
         }
+
+        UpdateSlider();
+    }
+
+    private void UpdateSlider()
+    {
+        float progress = Mathf.Clamp01((RoundTime - TimeLeft) / RoundTime);
+        Slider.value = progress;
     }
 
     public void Win()
