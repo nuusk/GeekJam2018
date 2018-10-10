@@ -53,3 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeText: {fileID: 0}
   TotalTime: 100
+  TimeLeft: 0
+  TimeStopped: 0
+  TimeFactor: 0
+  GameEnded: 0
+  StageType: 0
