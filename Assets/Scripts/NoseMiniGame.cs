@@ -36,14 +36,12 @@ public class NoseMiniGame : MonoBehaviour, IMiniGame
 
     public void Win()
     {
-        Debug.Log("Wygrana");
-        Destroy(gameObject);
+        Destroy(gameObject, 1.5f);
     }
 
     public void Lose()
     {
-        Debug.Log("Przegrana");
-        Destroy(gameObject);
+        Destroy(gameObject, 1.5f);
     }
 
     private void UpdateTime()

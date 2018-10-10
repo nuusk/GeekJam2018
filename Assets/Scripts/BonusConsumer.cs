@@ -9,7 +9,7 @@ public class BonusConsumer : MonoBehaviour
         if (collision.gameObject.tag == "minigame-bonus")
         {
             IMiniGameBonus miniGameBonus = collision.gameObject.GetComponent<IMiniGameBonus>();
-            IMiniGame miniGame = collision.gameObject.GetComponentInParent<IMiniGame>();
+            IMiniGame miniGame = GameObject.FindGameObjectWithTag("minigame").GetComponent<IMiniGame>();
 
             GameManager.instance.AddToTime(miniGameBonus.BonusValue);
             miniGameBonus.Destroy();
