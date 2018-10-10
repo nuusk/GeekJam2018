@@ -6,13 +6,18 @@ using UnityEngine.UI;
 
 public class NoseMiniGame : MonoBehaviour, IMiniGame
 {
+    public Image ResultImage;
     public Slider Slider;
     public float RoundTime = 3f;
     public float TimeLeft;
 
+    private bool _completed = false;
+    private ImageManager _imageManager;
+
     void Start()
     {
         TimeLeft = RoundTime;
+        _imageManager = GameObject.Find("ImageManager").GetComponent<ImageManager>();
     }
 
     void Update()
@@ -36,12 +41,26 @@ public class NoseMiniGame : MonoBehaviour, IMiniGame
 
     public void Win()
     {
+        _completed = true;
+
+        ShowImage(_imageManager.GetWinSprite());
         Destroy(gameObject, 1.5f);
     }
 
     public void Lose()
     {
+        if (_completed)
+            return;
+
+        ShowImage(_imageManager.GetLoseSprite());
         Destroy(gameObject, 1.5f);
+    }
+
+    private void ShowImage(Sprite sprite)
+    {
+        ResultImage.sprite = sprite;
+        ResultImage.transform.localScale = Vector3.zero;
+        ResultImage.enabled = true;
     }
 
     private void UpdateTime()

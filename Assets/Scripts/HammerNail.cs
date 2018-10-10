@@ -10,9 +10,11 @@ public class HammerNail : MonoBehaviour, IMiniGameBonus
     public float HitForce = 20f;
 
     private Rigidbody2D rb;
+    private AudioSource _audioSource;
 
     void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -30,5 +32,6 @@ public class HammerNail : MonoBehaviour, IMiniGameBonus
     public void HitSpike()
     {
         rb.AddForce(new Vector2(0, -20));
+        _audioSource.Play();
     }
 }
