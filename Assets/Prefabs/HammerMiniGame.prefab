@@ -429,6 +429,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a872d1b6fb17ce84a8b5507abf862f11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WinSprite: {fileID: 0}
+  LoseSprite: {fileID: 0}
+  ResultImage: {fileID: 0}
   Slider: {fileID: 114615491152225540}
   RoundTime: 4
   TimeLeft: 0
@@ -695,10 +698,10 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 48.25, y: 2.25}
+  m_Size: {x: 56, y: 21.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!212 &212622239953949870
@@ -836,7 +839,7 @@ SpriteRenderer:
   m_Size: {x: 48.25, y: 2.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!222 &222155446584253290

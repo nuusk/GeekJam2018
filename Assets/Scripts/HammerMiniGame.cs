@@ -6,9 +6,14 @@ using UnityEngine.UI;
 
 public class HammerMiniGame : MonoBehaviour, IMiniGame
 {
+    public Sprite WinSprite;
+    public Sprite LoseSprite;
+    public Image ResultImage;
     public Slider Slider;
     public float RoundTime = 10f;
     public float TimeLeft;
+
+    private bool Completed = false;
 
     void Start()
     {
@@ -36,12 +41,26 @@ public class HammerMiniGame : MonoBehaviour, IMiniGame
 
     public void Lose()
     {
+        if (Completed)
+            return;
+
+        ShowImage(LoseSprite);
         Destroy(gameObject, 1.5f);
     }
 
     public void Win()
     {
+        Completed = true;
+
+        ShowImage(WinSprite);
         Destroy(gameObject, 1.5f);
+    }
+
+    private void ShowImage(Sprite sprite)
+    {
+        ResultImage.sprite = sprite;
+        ResultImage.transform.localScale = Vector3.zero;
+        ResultImage.enabled = true;
     }
 
     private void UpdateTime()
