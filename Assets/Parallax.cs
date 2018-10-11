@@ -16,9 +16,11 @@ public class Parallax : MonoBehaviour {
 
 	private float lastCameraY;
 
+    public Camera psychedelicCamera;
+
 	// Use this for initialization
 	void Start () {
-		cameraTransform = Camera.main.transform;
+		cameraTransform = psychedelicCamera.transform;
 		
 		lastCameraX = cameraTransform.position.x;
 		lastCameraY = cameraTransform.position.y;
