@@ -69,12 +69,12 @@ public class Parallax : MonoBehaviour {
 		lastCameraY = cameraTransform.position.y;
 		Debug.Log(rightIndex);
 
-		if (cameraTransform.position.x < (layers[leftIndex].transform.position.x + viewZone)) {
-			ScrollLeft();
-		}
+		// if (cameraTransform.position.x < (layers[leftIndex].transform.position.x + viewZone)) {
+		// 	ScrollLeft();
+		// }
 
-		if (cameraTransform.position.x > (layers[rightIndex].transform.position.x - viewZone)) {
-			ScrollRight();
-		}
+		// if (cameraTransform.position.x > (layers[rightIndex].transform.position.x - viewZone)) {
+		// 	ScrollRight();
+		// }
 	}
 }
