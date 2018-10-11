@@ -149,6 +149,7 @@ namespace Kino
                 verticalJump = 0;
                 horizontalShake = 0;
                 colorDrift = 0;
+                currentIteration = glitchBoostIterations;
             }
         }
     }
