@@ -7,6 +7,21 @@ public class PlayerControllScript : MonoBehaviour
 {
     public GameObject soupParticleConsumedPrefab;
 
+    public AudioClip jumpSound;
+    public AudioClip ghastSound;
+
+    public int soupsToEnterForge = 3;
+
+    public AudioClip eatSoup1;
+    public AudioClip eatSoup2;
+    public AudioClip eatSoup3;
+
+    public AudioClip land1;
+    public AudioClip land2;
+
+    public AudioClip forge;
+
+
     public Animator animator;
 
     // Use this for initialization
@@ -47,23 +62,30 @@ public class PlayerControllScript : MonoBehaviour
 
     private void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+        if (GameManager.instance.StageType != StageType.Forge) {
+            bool lastIsGrounded = isGrounded;
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+            if (!lastIsGrounded && isGrounded) {
+                SoundManager.instance.RandomizeSfx(land1, land2);
+            }
 
-        moveInput = Input.GetAxis("Horizontal");
+            moveInput = Input.GetAxis("Horizontal");
 
-        animator.SetBool("isGrounded", isGrounded);
-        animator.SetFloat("SpeedX", Mathf.Abs(moveInput));
-        animator.SetFloat("SpeedY", rb.velocity.y);
+            animator.SetBool("isGrounded", isGrounded);
+            animator.SetFloat("SpeedX", Mathf.Abs(moveInput));
+            animator.SetFloat("SpeedY", rb.velocity.y);
 
-        rb.velocity = new Vector2(moveInput * speed * outsideEffects, rb.velocity.y);
+            rb.velocity = new Vector2(moveInput * speed * outsideEffects, rb.velocity.y);
 
-        if(facingRight == false && moveInput > 0)
-        {
-            Flip();
-        } else if(facingRight == true && moveInput < 0)
-        {
-            Flip();
+            if(facingRight == false && moveInput > 0)
+            {
+                Flip();
+            } else if(facingRight == true && moveInput < 0)
+            {
+                Flip();
+            }
         }
+       
     }
 
     void Flip()
@@ -76,26 +98,29 @@ public class PlayerControllScript : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 0)
-        {
-            rb.velocity = Vector2.up * jumpForce;
-            extraJumps--;
-        }
+        if (GameManager.instance.StageType != StageType.Forge) {
 
-        // Slowing down after enemy 
-        if (remainingTime > 0)
-        {
-            remainingTime -= Time.deltaTime;
-            outsideEffects = slowDownRate;
-        }
-        else
-        {
-            outsideEffects = 1;
-        }
+            if(Input.GetKeyDown(KeyCode.UpArrow) && extraJumps > 0)
+            {
+                rb.velocity = Vector2.up * jumpForce;
+                extraJumps--;
+            }
 
-        if (isGrounded == true)
-        {
-            extraJumps = maxJumps;
+            // Slowing down after enemy 
+            if (remainingTime > 0)
+            {
+                remainingTime -= Time.deltaTime;
+                outsideEffects = slowDownRate;
+            }
+            else
+            {
+                outsideEffects = 1;
+            }
+
+            if (isGrounded == true)
+            {
+                extraJumps = maxJumps;
+            }
         }
     }
 
@@ -106,8 +131,9 @@ public class PlayerControllScript : MonoBehaviour
             GameObject soupObject = Instantiate(soupParticleConsumedPrefab, other.transform.position, Quaternion.identity);
             soupObject.GetComponent<ParticleSystem>().Play();
             Destroy(soupObject, 1f);
-            if (soupCount >= 5) {
-                Debug.Log("Wbijamy");
+            SoundManager.instance.RandomizeSfx(eatSoup1, eatSoup2, eatSoup3);
+            if (soupCount >= soupsToEnterForge) {
+                SoundManager.instance.enterForge();
                 GameManager.instance.ChangeStageToForge();
                 soupCount = 0;
             }
@@ -115,6 +141,9 @@ public class PlayerControllScript : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("Enemy"))
         {
+            if (remainingTime <= 0) {
+                SoundManager.instance.ghastScream(ghastSound);
+            }
             remainingTime = slowDownTime;
         }
     }
