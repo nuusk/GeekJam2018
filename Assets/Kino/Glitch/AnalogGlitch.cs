@@ -114,12 +114,12 @@ namespace Kino
 
 
         public int glitchBoostIterations = 5;
-        public float glitchStart = 0.75f;
+        private float glitchStart = 0.4f;
 
-        public float cMaxScanLineJitter = 0.7f;
-        public float cMaxVerticalJump = 0.4f;
-        public float cMaxHorizontalShake = 0.6f;
-        public float cMaxColorDrift = 0.3f;
+        private float cMaxScanLineJitter = 0.7f;
+        private float cMaxVerticalJump = 0.4f;
+        private float cMaxHorizontalShake = 0.6f;
+        private float cMaxColorDrift = 0.3f;
 
         private float iterationLength;
 
