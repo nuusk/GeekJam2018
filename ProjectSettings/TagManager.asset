@@ -11,6 +11,8 @@ TagManager:
   - GhastSpawner
   - Enemy
   - BillboardSpawner
+  - NoseLeftBoundry
+  - NoseRightBoundry
   layers:
   - Default
   - TransparentFX
