@@ -2816,6 +2816,7 @@ Prefab:
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
+<<<<<<< HEAD
   m_Modification:
     m_TransformParent: {fileID: 535311237}
     m_Modifications:
@@ -2857,6 +2858,61 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe0227103b6cdff478408864110610c7, type: 2}
+=======
+  m_Size: {x: 8, y: 8}
+  m_EdgeRadius: 0
+--- !u!1001 &1935624758
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4605353253387812, guid: eb7dd0fc4cc860047aef767731c11a5b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605353253387812, guid: eb7dd0fc4cc860047aef767731c11a5b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 6.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605353253387812, guid: eb7dd0fc4cc860047aef767731c11a5b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605353253387812, guid: eb7dd0fc4cc860047aef767731c11a5b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605353253387812, guid: eb7dd0fc4cc860047aef767731c11a5b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605353253387812, guid: eb7dd0fc4cc860047aef767731c11a5b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605353253387812, guid: eb7dd0fc4cc860047aef767731c11a5b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605353253387812, guid: eb7dd0fc4cc860047aef767731c11a5b, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114966322250359834, guid: eb7dd0fc4cc860047aef767731c11a5b,
+        type: 2}
+      propertyPath: TimeText
+      value: 
+      objectReference: {fileID: 954145776}
+    - target: {fileID: 114966322250359834, guid: eb7dd0fc4cc860047aef767731c11a5b,
+        type: 2}
+      propertyPath: TotalTime
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eb7dd0fc4cc860047aef767731c11a5b, type: 2}
+>>>>>>> ff1593c7eb1150b92c7bc5b82e8e575c2ef1b410
   m_IsPrefabAsset: 0
 --- !u!1 &1943755502
 GameObject:
@@ -2886,7 +2942,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   probability: 0.01
-  billboardPrefab: {fileID: 0}
+  billboardPrefab1: {fileID: 1647389581049460, guid: 26eb21cb728ae4d05ab75f3ddeae770d,
+    type: 2}
+  billboardPrefab2: {fileID: 1066687661215144, guid: 2b861ae47e4e84ab2ae8bec5bee042ae,
+    type: 2}
+  billboardPrefab3: {fileID: 1224885983878858, guid: 247f276bc96b04b91819b780a1badcac,
+    type: 2}
+  billboardPrefab4: {fileID: 1986491353911930, guid: 1439e458442cc449cb08ddfa75ac7caf,
+    type: 2}
   interval: 1
 --- !u!4 &1943755504
 Transform:
@@ -3156,6 +3219,7 @@ GameObject:
   - component: {fileID: 2053938457}
   - component: {fileID: 2053938456}
   - component: {fileID: 2053938458}
+  - component: {fileID: 2053938459}
   m_Layer: 0
   m_Name: PsychedelicRunCamera
   m_TagString: MainCamera
@@ -3253,6 +3317,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Cinemachine.CinemachineBrain+VcamEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+<<<<<<< HEAD
 --- !u!1001 &2058860397
 Prefab:
   m_ObjectHideFlags: 0
@@ -3299,6 +3364,30 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe0227103b6cdff478408864110610c7, type: 2}
   m_IsPrefabAsset: 0
+=======
+--- !u!114 &2053938459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2053938454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 870b9a8f0f82f4f56800cc427bcd1025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scanLineJitter: 0
+  _verticalJump: 0
+  _horizontalShake: 0
+  _colorDrift: 0
+  _shader: {fileID: 4800000, guid: da33272284ea24f208f36998880990be, type: 3}
+  glitchBoostIterations: 5
+  glitchStart: 0.25
+  cMaxScanLineJitter: 0.7
+  cMaxVerticalJump: 0.4
+  cMaxHorizontalShake: 0.6
+  cMaxColorDrift: 0.3
+>>>>>>> ff1593c7eb1150b92c7bc5b82e8e575c2ef1b410
 --- !u!1 &2111976041
 GameObject:
   m_ObjectHideFlags: 0
