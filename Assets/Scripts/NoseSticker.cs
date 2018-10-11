@@ -56,8 +56,8 @@ public class NoseSticker : MonoBehaviour, IMiniGameBonus
             targetPosition = GetNewTargetPosition();
 
         float step = HorizontalSpeed * Time.deltaTime;
-        
-        transform.position = Vector2.MoveTowards(transform.position, targetPosition, step);
+        transform.position += Vector3.right * step; 
+        //transform.position = Vector2.MoveTowards(transform.position, targetPosition, step);
     }
 
     private bool IsOnTargetPosition()

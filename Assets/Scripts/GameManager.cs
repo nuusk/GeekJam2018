@@ -34,9 +34,6 @@ public class GameManager : MonoBehaviour
 
 	void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && StageType == StageType.Game)
-            ChangeStageToForge();
-
         UpdateTime();
 	}
 
@@ -68,6 +65,8 @@ public class GameManager : MonoBehaviour
         StageType = StageType.Game;
         TimeStopped = false;
         TimeText.enabled = true;
+        forgeOfTimeCamera.enabled = false;
+        psychedelicRunCamera.enabled = true;
     }
 
     public void ChangeStageToForge()
