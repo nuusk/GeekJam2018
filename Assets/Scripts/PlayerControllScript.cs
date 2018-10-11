@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerControllScript : MonoBehaviour
 {
-
     public GameObject soupParticleConsumedPrefab;
 
     public Animator animator;
@@ -107,6 +106,11 @@ public class PlayerControllScript : MonoBehaviour
             GameObject soupObject = Instantiate(soupParticleConsumedPrefab, other.transform.position, Quaternion.identity);
             soupObject.GetComponent<ParticleSystem>().Play();
             Destroy(soupObject, 1f);
+            if (soupCount >= 5) {
+                Debug.Log("Wbijamy");
+                GameManager.instance.ChangeStageToForge();
+                soupCount = 0;
+            }
             SetCountText();
         }
         else if (other.gameObject.CompareTag("Enemy"))

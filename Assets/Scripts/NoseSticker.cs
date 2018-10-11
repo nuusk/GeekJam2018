@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class NoseSticker : MonoBehaviour, IMiniGameBonus
 {
+
     public float BonusValue { get { return Bonus; } }
 
     public float Bonus = 0.5f;
@@ -19,19 +20,19 @@ public class NoseSticker : MonoBehaviour, IMiniGameBonus
     private Rigidbody2D rb;
     private SpotType prevSpot;
     private Vector2 targetPosition;
-    private const float delta = 0.1f;
+    private const float delta = 0.001f;
+
+    private bool isFacingRight = true;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         prevSpot = SpotType.Center;
-        leftSpot = new Vector2(-3.5f, transform.position.y);
-        rightSpot = new Vector2(3.5f, transform.position.y);
         centerSpot = new Vector2(0, transform.position.y);
         targetPosition = GetNewTargetPosition();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         Move();
         OnKeyDown();
@@ -55,12 +56,26 @@ public class NoseSticker : MonoBehaviour, IMiniGameBonus
             targetPosition = GetNewTargetPosition();
 
         float step = HorizontalSpeed * Time.deltaTime;
+        
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, step);
     }
 
     private bool IsOnTargetPosition()
     {
         return (transform.position.x >= targetPosition.x - delta && transform.position.x <= targetPosition.x + delta);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.tag == "NoseLeftBoundry")
+        {
+            isFacingRight = true;   
+        }
+
+        if (other.gameObject.tag == "NoseRightBoundry")
+        {
+            isFacingRight = false;
+        }    
+
     }
 
     private Vector2 SelectSpotPosition()

@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public Camera psychedelicRunCamera;
+    public Camera forgeOfTimeCamera;
+    public GameObject forgeOfTime;
     public static GameManager instance;
 
     public Text TimeText;
@@ -39,6 +42,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        // forgeOfTimeCamera.enabled = false;
     }
 
     #endregion
@@ -73,7 +77,9 @@ public class GameManager : MonoBehaviour
         TimeText.enabled = false;
 
         int idx = UnityEngine.Random.Range(0, MiniGames.Length);
-        Instantiate(MiniGames[idx], transform.parent);
+        Instantiate(MiniGames[idx], forgeOfTime.transform);
+        forgeOfTimeCamera.enabled = true;
+        psychedelicRunCamera.enabled = false;
     }
 
     #endregion
