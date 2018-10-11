@@ -2162,6 +2162,58 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8, y: 8}
   m_EdgeRadius: 0
+--- !u!1001 &1935624758
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4605353253387812, guid: eb7dd0fc4cc860047aef767731c11a5b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605353253387812, guid: eb7dd0fc4cc860047aef767731c11a5b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 6.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605353253387812, guid: eb7dd0fc4cc860047aef767731c11a5b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605353253387812, guid: eb7dd0fc4cc860047aef767731c11a5b, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605353253387812, guid: eb7dd0fc4cc860047aef767731c11a5b, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605353253387812, guid: eb7dd0fc4cc860047aef767731c11a5b, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605353253387812, guid: eb7dd0fc4cc860047aef767731c11a5b, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4605353253387812, guid: eb7dd0fc4cc860047aef767731c11a5b, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114966322250359834, guid: eb7dd0fc4cc860047aef767731c11a5b,
+        type: 2}
+      propertyPath: TimeText
+      value: 
+      objectReference: {fileID: 954145776}
+    - target: {fileID: 114966322250359834, guid: eb7dd0fc4cc860047aef767731c11a5b,
+        type: 2}
+      propertyPath: TotalTime
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eb7dd0fc4cc860047aef767731c11a5b, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1943755502
 GameObject:
   m_ObjectHideFlags: 0
@@ -2341,6 +2393,7 @@ GameObject:
   - component: {fileID: 2053938457}
   - component: {fileID: 2053938456}
   - component: {fileID: 2053938458}
+  - component: {fileID: 2053938459}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2355,7 +2408,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2053938454}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 338, y: 0.0000019073486, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2388,11 +2441,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
+  near clip plane: 0.4
   far clip plane: 5000
-  field of view: 40
+  field of view: 99
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 30
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2438,6 +2491,28 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Cinemachine.CinemachineBrain+VcamEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &2053938459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2053938454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 870b9a8f0f82f4f56800cc427bcd1025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scanLineJitter: 0
+  _verticalJump: 0
+  _horizontalShake: 0
+  _colorDrift: 0
+  _shader: {fileID: 4800000, guid: da33272284ea24f208f36998880990be, type: 3}
+  glitchBoostIterations: 5
+  glitchStart: 0.25
+  cMaxScanLineJitter: 0.7
+  cMaxVerticalJump: 0.4
+  cMaxHorizontalShake: 0.6
+  cMaxColorDrift: 0.3
 --- !u!1 &2111976041
 GameObject:
   m_ObjectHideFlags: 0
